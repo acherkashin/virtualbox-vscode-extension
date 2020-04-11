@@ -12,7 +12,7 @@
   "activationEvents": [
     "onView:vb-machines",
     "onCommand:virtualbox-extension.runVM",
-    "onCommand:virtualbox-extension.stopVM",
+    "onCommand:virtualbox-extension.saveStateVM",
     "onCommand:virtualbox-extension.refreshVMs"
   ],
   "main": "./out/extension.js",
@@ -25,7 +25,7 @@
         "icon": "$(run)"
       },
       {
-        "command": "virtualbox-extension.stopVM",
+        "command": "virtualbox-extension.saveStateVM",
         "category": "Virtual Box",
         "title": "Stop Virtual Machine (state will be saved)",
         "icon": "$(debug-stop)"
@@ -74,7 +74,7 @@
           "when": "viewItem == vmStopped && view == vb-machines"
         },
         {
-          "command": "virtualbox-extension.stopVM",
+          "command": "virtualbox-extension.saveStateVM",
           "group": "inline",
           "when": "viewItem == vmRunning && view == vb-machines"
         },
@@ -89,7 +89,7 @@
           "when": "false"
         },
         {
-          "command": "virtualbox-extension.stopVM",
+          "command": "virtualbox-extension.saveStateVM",
           "when": "false"
         }
       ]
