@@ -10,7 +10,10 @@
     "Other"
   ],
   "activationEvents": [
-    "onView:vb-machines"
+    "onView:vb-machines",
+    "onCommand:virtualbox-extension.runVM",
+    "onCommand:virtualbox-extension.stopVM",
+    "onCommand:virtualbox-extension.refreshVMs"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -28,7 +31,7 @@
         "icon": "$(debug-stop)"
       },
       {
-        "command": "virtualbox-extension.refreshVms",
+        "command": "virtualbox-extension.refreshVMs",
         "category": "Virtual Box",
         "title": "Refresh Virtual Machines explorer",
         "icon": "$(refresh)"
@@ -54,7 +57,7 @@
     "menus": {
       "view/title": [
         {
-          "command": "virtualbox-extension.refreshVms",
+          "command": "virtualbox-extension.refreshVMs",
           "group": "navigation",
           "when": "view == vb-machines"
         }
@@ -69,6 +72,16 @@
           "command": "virtualbox-extension.stopVM",
           "group": "inline",
           "when": "viewItem == vmRunning && view == vb-machines"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "virtualbox-extension.runVM",
+          "when": "false"
+        },
+        {
+          "command": "virtualbox-extension.stopVM",
+          "when": "false"
         }
       ]
     }

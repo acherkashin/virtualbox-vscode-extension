@@ -47,7 +47,7 @@ export function activate(context: vscode.ExtensionContext) {
 				}
 			}
 		}),
-		vscode.commands.registerCommand('virtualbox-extension.refreshVms', () => {
+		vscode.commands.registerCommand('virtualbox-extension.refreshVMs', () => {
 			vmProvider.refresh();
 		}),
 	);
