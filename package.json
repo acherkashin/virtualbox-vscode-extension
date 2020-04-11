@@ -2,6 +2,11 @@
   "name": "virtualbox-extension",
   "displayName": "virtualbox-extension",
   "description": "Extension allows to manage your VMs right from Visual Studio Code",
+  "publisher": "acherkashin",
+  "icon": "images/virtualbox-icon.png",
+  "repository": {
+    "url": "https://github.com/acherkashin/virtualbox-vscode-extension"
+  },
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.44.0"
