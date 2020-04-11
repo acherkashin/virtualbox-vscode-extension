@@ -18,14 +18,21 @@
     "commands": [
       {
         "command": "virtualbox-extension.runVM",
+        "category": "Virtual Box",
         "title": "Run Virtual Machine"
+      },
+      {
+        "command": "virtualbox-extension.refreshVms",
+        "category": "Virtual Box",
+        "title": "Refresh Virtual Machines explorer",
+        "icon": "$(refresh)"
       }
     ],
     "viewsContainers": {
       "activitybar": [
         {
           "id": "virtual-box-explorer",
-          "title": "Virtual Box",
+          "title": "Virtual Machines",
           "icon": "resources/virtualbox.svg"
         }
       ]
@@ -37,6 +44,15 @@
           "name": "Virtual Machines"
         }
       ]
+    },
+    "menus": {
+      "view/title": [
+				{
+					"command": "virtualbox-extension.refreshVms",
+          "group": "navigation",
+          "when": "view == vb-machines"
+				}
+			]
     }
   },
   "scripts": {
