@@ -34,7 +34,26 @@ export function activate(context: vscode.ExtensionContext) {
 
 				const running = await isRunning(vm.id);
 				if (running) {
-					virtualbox.stop(vm.id, (error) => {
+					virtualbox.savestate(vm.id, (error) => {
+						vmProvider.refresh();
+						if (error) {
+							vscode.window.showErrorMessage(`Cannot stop virtual machine "${vm.name}": ${error?.message ?? "Unknown error"}`);
+						} else {
+							vscode.window.showInformationMessage(`Virtual machine "${vm.name}" has been stopped successfully`);
+						}
+					});
+				} else {
+					vmProvider.refresh();
+				}
+			}
+		}),
+		vscode.commands.registerCommand("virtualbox-extension.poweroffVm", async (vmTreeItem: VirtualMachineTreeItem) => {
+			if (vmTreeItem) {
+				const { vm } = vmTreeItem;
+
+				const running = await isRunning(vm.id);
+				if (running) {
+					virtualbox.poweroff(vm.id, (error) => {
 						vmProvider.refresh();
 						if (error) {
 							vscode.window.showErrorMessage(`Cannot stop virtual machine "${vm.name}": ${error?.message ?? "Unknown error"}`);

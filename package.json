@@ -27,7 +27,7 @@
       {
         "command": "virtualbox-extension.stopVM",
         "category": "Virtual Box",
-        "title": "Stop Virtual Machine",
+        "title": "Stop Virtual Machine (state will be saved)",
         "icon": "$(debug-stop)"
       },
       {
@@ -35,6 +35,11 @@
         "category": "Virtual Box",
         "title": "Refresh Virtual Machines explorer",
         "icon": "$(refresh)"
+      },
+      {
+        "command": "virtualbox-extension.poweroffVm",
+        "category": "Virtual Box",
+        "title": "Power off the machine (state will be lost)"
       }
     ],
     "viewsContainers": {
@@ -71,6 +76,10 @@
         {
           "command": "virtualbox-extension.stopVM",
           "group": "inline",
+          "when": "viewItem == vmRunning && view == vb-machines"
+        },
+        {
+          "command": "virtualbox-extension.poweroffVm",
           "when": "viewItem == vmRunning && view == vb-machines"
         }
       ],

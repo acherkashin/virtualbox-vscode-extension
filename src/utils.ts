@@ -8,13 +8,13 @@ export interface VirtualMachine {
     os: string;
 }
 
-function getOsName(vmId: string): Promise<string> {
-    return new Promise((resolve, reject) => {
-        virtualbox.guestproperty.os(vmId, (value) => {
-            resolve(value);
-        });
-    });
-}
+// function getOsName(vmId: string): Promise<string> {
+//     return new Promise((resolve, reject) => {
+//         virtualbox.guestproperty.get({ vmname: vmId, key: "ostype" }, (value) => {
+//             resolve(value);
+//         });
+//     });
+// }
 
 export const isRunning = promisify(virtualbox.isRunning);
 
@@ -28,7 +28,7 @@ export function getAllVms(): Promise<VirtualMachine[]> {
                     id: vmId,
                     name: list[vmId].name,
                     running: list[vmId].running,
-                    os: await getOsName(vmId),
+                    // os: await getOsName(vmId),
                 } as VirtualMachine));
 
                 const vms = await Promise.all(vmsPromise);
