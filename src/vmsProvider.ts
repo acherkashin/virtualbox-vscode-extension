@@ -8,7 +8,12 @@ export class VirtualMachinesProvider implements vscode.TreeDataProvider<vscode.T
     }
 
     getChildren(element?: vscode.TreeItem): vscode.ProviderResult<vscode.TreeItem[]> {
-        return getAllVms().then((vms) => vms.map(vm => new VirtualMachineTreeItem(vm)));
+        return getAllVms()
+            .then((vms) => vms.map(vm => new VirtualMachineTreeItem(vm)))
+            .catch((err) => {
+                vscode.window.showErrorMessage(err);
+                return [];
+            });
     }
 }
 

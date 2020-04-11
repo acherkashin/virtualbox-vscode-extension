@@ -1,29 +1,23 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { VirtualMachinesProvider } from './vmsProvider';
+import * as virtualbox from 'virtualbox';
+import { VirtualMachine } from './utils';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "virtualbox-extension" is now active!');
-
 	vscode.window.registerTreeDataProvider("vb-machines", new VirtualMachinesProvider());
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('virtualbox-extension.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from virtualbox-extension!');
+	let disposable = vscode.commands.registerCommand('virtualbox-extension.runVM', (vm: VirtualMachine) => {
+		if (vm) {
+			virtualbox.start(vm.id, true, (error) => {
+				if (error) {
+					vscode.window.showErrorMessage(`Cannot run virtual machine"${vm.name}": ${error?.message ?? "Unknown error"}`);
+				} else {
+					vscode.window.showInformationMessage(`Virtual machine "${vm.name}" has been run successfully`);
+				}
+			});
+		}
 	});
 
 	context.subscriptions.push(disposable);
 }
 
-// this method is called when your extension is deactivated
 export function deactivate() { }

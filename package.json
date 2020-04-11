@@ -17,8 +17,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "virtualbox-extension.helloWorld",
-        "title": "Hello World"
+        "command": "virtualbox-extension.runVM",
+        "title": "Run Virtual Machine"
       }
     ],
     "viewsContainers": {
