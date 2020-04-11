@@ -7,10 +7,6 @@ export class VirtualMachineTreeItem extends vscode.TreeItem {
 
         this.id = vm.id;
         this.iconPath = vm.running ? new vscode.ThemeIcon("vm-running") : new vscode.ThemeIcon("vm");
-        this.command = {
-            title: "Run virtual machine",
-            command: "virtualbox-extension.runVM",
-            arguments: [vm],
-        };
+        this.contextValue = vm.running ? "vmRunning" : "vmStopped";
     }
 }

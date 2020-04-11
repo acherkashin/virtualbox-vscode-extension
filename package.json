@@ -19,7 +19,8 @@
       {
         "command": "virtualbox-extension.runVM",
         "category": "Virtual Box",
-        "title": "Run Virtual Machine"
+        "title": "Run Virtual Machine",
+        "icon": "$(run)"
       },
       {
         "command": "virtualbox-extension.refreshVms",
@@ -47,12 +48,19 @@
     },
     "menus": {
       "view/title": [
-				{
-					"command": "virtualbox-extension.refreshVms",
+        {
+          "command": "virtualbox-extension.refreshVms",
           "group": "navigation",
           "when": "view == vb-machines"
-				}
-			]
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "virtualbox-extension.runVM",
+          "group": "inline",
+          "when": "viewItem == vmStopped && view == vb-machines"
+        }
+      ]
     }
   },
   "scripts": {
