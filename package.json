@@ -10,7 +10,7 @@
     "Other"
   ],
   "activationEvents": [
-	"onView:vb-machines",
+    "onView:vb-machines",
     "onCommand:virtualbox-extension.helloWorld"
   ],
   "main": "./out/extension.js",
@@ -26,7 +26,7 @@
         {
           "id": "virtual-box-explorer",
           "title": "Virtual Box",
-          "icon": "TODO"
+          "icon": "resources/virtualbox.svg"
         }
       ]
     },
