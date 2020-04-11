@@ -3,6 +3,13 @@ import { getAllVms } from './utils';
 import { VirtualMachineTreeItem } from './vmTreeitem';
 
 export class VirtualMachinesProvider implements vscode.TreeDataProvider<vscode.TreeItem> {
+    private _onDidChangeTreeData: vscode.EventEmitter<VirtualMachineTreeItem | undefined> = new vscode.EventEmitter<VirtualMachineTreeItem | undefined>();
+    readonly onDidChangeTreeData: vscode.Event<VirtualMachineTreeItem | undefined> = this._onDidChangeTreeData.event;
+
+    refresh(item?: VirtualMachineTreeItem): void {
+        this._onDidChangeTreeData.fire(item);
+    }
+
     getTreeItem(element: vscode.TreeItem): vscode.TreeItem | Thenable<vscode.TreeItem> {
         return element;
     }
@@ -16,8 +23,3 @@ export class VirtualMachinesProvider implements vscode.TreeDataProvider<vscode.T
             });
     }
 }
-
-
-// virtualbox.start(firstVM.name, true, (a: any) => {
-//     console.log(a);
-// });
