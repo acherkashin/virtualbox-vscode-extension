@@ -6,6 +6,7 @@ export class VirtualMachineTreeItem extends vscode.TreeItem {
         super(vm.name);
 
         this.id = vm.id;
+        this.description = `(${vm.os})`;
         this.iconPath = vm.running ? new vscode.ThemeIcon("vm-running") : new vscode.ThemeIcon("vm");
         this.contextValue = vm.running ? "vmRunning" : "vmStopped";
     }
