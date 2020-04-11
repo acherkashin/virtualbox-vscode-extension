@@ -1,6 +1,6 @@
 {
   "name": "virtualbox-extension",
-  "displayName": "virtualbox-extension",
+  "displayName": "VirtualBox",
   "description": "Extension allows to manage your VMs right from Visual Studio Code",
   "publisher": "acherkashin",
   "icon": "images/virtualbox-icon.png",
