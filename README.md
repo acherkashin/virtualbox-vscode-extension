@@ -6,7 +6,7 @@ The extension aim is decreasing your switching between different windows and all
 
 - Running VM
 
-![VirtualBox](images/stopping-vm.gif)
+![VirtualBox](images/running-vm.gif)
 
 - Stopping VM with saving state and without it
 
