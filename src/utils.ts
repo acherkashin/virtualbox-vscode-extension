@@ -1,4 +1,5 @@
 import * as virtualbox from "virtualbox";
+import { promisify } from "util";
 
 export interface VirtualMachine {
     id: string;
@@ -14,6 +15,8 @@ function getOsName(vmId: string): Promise<string> {
         });
     });
 }
+
+export const isRunning = promisify(virtualbox.isRunning);
 
 export function getAllVms(): Promise<VirtualMachine[]> {
     return new Promise((resolve, reject) => {

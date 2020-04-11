@@ -10,8 +10,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onView:vb-machines",
-    "onCommand:virtualbox-extension.helloWorld"
+    "onView:vb-machines"
   ],
   "main": "./out/extension.js",
   "contributes": {
