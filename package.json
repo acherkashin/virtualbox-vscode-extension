@@ -109,7 +109,14 @@
           "when": "false"
         }
       ]
-    }
+    },
+    "keybindings": [
+      {
+        "key": "ctrl+shift+v ctrl+shift+b",
+        "mac": "cmd+shift+v cmd+shift+b",
+        "command": "workbench.view.extension.virtual-box-explorer"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
