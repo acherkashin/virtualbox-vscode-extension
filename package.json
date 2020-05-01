@@ -18,7 +18,8 @@
     "onView:vb-machines",
     "onCommand:virtualbox-extension.runVM",
     "onCommand:virtualbox-extension.saveStateVM",
-    "onCommand:virtualbox-extension.refreshVMs"
+    "onCommand:virtualbox-extension.refreshVMs",
+    "onCommand:virtualbox-extension.stopAllVms"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -45,6 +46,16 @@
         "command": "virtualbox-extension.poweroffVm",
         "category": "Virtual Box",
         "title": "Power off the machine (state will be lost)"
+      },
+      {
+        "command": "virtualbox-extension.stopAllVms",
+        "category": "Virtual Box",
+        "title": "Stop all Virtual Machines (state will be saved)"
+      },
+      {
+        "command": "virtualbox-extension.poweOffAllVms",
+        "category": "Virtual Box",
+        "title": "Power off all Virtual Machines (state will be lost)"
       }
     ],
     "viewsContainers": {

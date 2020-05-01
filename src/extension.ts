@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { VirtualMachinesProvider } from './vmsProvider';
 import { VirtualMachineTreeItem } from './vmTreeitem';
-import { isRunning, startWithGui, saveState, powerOff } from './utils';
+import { isRunning, startWithGui, saveState, powerOff, stopAllVms, poweOffAllVms } from './utils';
 
 export function activate(context: vscode.ExtensionContext) {
 	const vmProvider = new VirtualMachinesProvider();
@@ -59,6 +59,16 @@ export function activate(context: vscode.ExtensionContext) {
 		}),
 		vscode.commands.registerCommand('virtualbox-extension.refreshVMs', () => {
 			vmProvider.refresh();
+		}),
+		vscode.commands.registerCommand('virtualbox-extension.stopAllVms', () => {
+			stopAllVms().then(() => {
+				vmProvider.refresh();
+			});
+		}),
+		vscode.commands.registerCommand('virtualbox-extension.poweOffAllVms', () => {
+			poweOffAllVms().then(() => {
+				vmProvider.refresh();
+			});
 		}),
 	);
 }

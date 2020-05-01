@@ -51,3 +51,23 @@ export function getAllVms(): Promise<VirtualMachine[]> {
         });
     });
 }
+
+/**
+ * Stops all virtual machines with saving states
+ */
+export async function stopAllVms() {
+    const vms = await getAllVms();
+    const runningVmIds = vms.filter((vm) => vm.running).map((vm) => vm.id);
+    const promises = runningVmIds.map(id => saveState(id));
+    return await Promise.all(promises);
+}
+
+/**
+ * Power off all virtual machines without saving states
+ */
+export async function poweOffAllVms() {
+    const vms = await getAllVms();
+    const runningVmIds = vms.filter((vm) => vm.running).map((vm) => vm.id);
+    const promises = runningVmIds.map(id => powerOff(id));
+    return await Promise.all(promises);
+}
