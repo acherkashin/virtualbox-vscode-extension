@@ -1,4 +1,4 @@
-# ![VirtualBox](images/virtualbox-icon.png) [Virtual Box Extension](https://marketplace.visualstudio.com/items?itemName=acherkashin.virtualbox-extension#overview)
+# ![VirtualBox](images/virtualbox-icon.png)[Virtual Box Extension](https://marketplace.visualstudio.com/items?itemName=acherkashin.virtualbox-extension#overview)
 
 The extension aim is to decrease your switching between different windows and allow you to control your VMs right from the Visual Studio Code activity bar.
 
