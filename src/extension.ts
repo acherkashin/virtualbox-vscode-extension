@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { VirtualMachinesProvider } from './vmsProvider';
 import { VirtualMachineTreeItem } from './vmTreeitem';
-import { isRunning, startWithGui, saveState, powerOff, stopAllVms, poweOffAllVms } from './utils';
+import { isRunning, startWithGui, startWithoutGui, saveState, powerOff, stopAllVms, poweOffAllVms } from './utils';
 
 export function activate(context: vscode.ExtensionContext) {
 	const vmProvider = new VirtualMachinesProvider();
@@ -19,6 +19,23 @@ export function activate(context: vscode.ExtensionContext) {
 						vscode.window.showInformationMessage(`Virtual machine "${vm.name}" has been run successfully`);
 					} catch (ex) {
 						vscode.window.showErrorMessage(`Cannot run virtual machine "${vm.name}": ${ex?.message ?? "Unknown error"}`);
+					}
+				}
+
+				vmProvider.refresh();
+			}
+		}),
+		vscode.commands.registerCommand('virtualbox-extension.runHeadlessVM', async (vmTreeItem?: VirtualMachineTreeItem) => {
+			if (vmTreeItem) {
+				const { vm } = vmTreeItem;
+				const running = await isRunning(vm.id);
+
+				if (!running) {
+					try {
+						await startWithoutGui(vm.id);
+						vscode.window.showInformationMessage(`Virtual machine "${vm.name}" (Headless) has been run successfully`);
+					} catch (ex) {
+						vscode.window.showErrorMessage(`Cannot run virtual machine "${vm.name}" (Headless): ${ex?.message ?? "Unknown error"}`);
 					}
 				}
 
