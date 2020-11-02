@@ -20,6 +20,9 @@ export const isRunning = promisify(virtualbox.isRunning);
 export const saveState = promisify(virtualbox.savestate);
 export const powerOff = promisify(virtualbox.poweroff);
 
+/**
+ * Start virtual machine
+ */
 export function startWithGui(vmId: string): Promise<void> {
     return new Promise((resolve, reject) => {
         virtualbox.start(vmId, true, (error) => {
@@ -32,6 +35,24 @@ export function startWithGui(vmId: string): Promise<void> {
     });
 }
 
+/**
+ * Start virtual machine Headless
+ */
+export function startWithoutGui(vmId: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+        virtualbox.start(vmId, false, (error) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve();
+            }
+        });
+    });
+}
+
+/**
+ * Get all virtual machines
+ */
 export function getAllVms(): Promise<VirtualMachine[]> {
     return new Promise((resolve, reject) => {
         virtualbox.list(async (list, error) => {

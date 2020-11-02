@@ -17,6 +17,7 @@
   "activationEvents": [
     "onView:vb-machines",
     "onCommand:virtualbox-extension.runVM",
+    "onCommand:virtualbox-extension.runHeadlessVM",
     "onCommand:virtualbox-extension.saveStateVM",
     "onCommand:virtualbox-extension.refreshVMs",
     "onCommand:virtualbox-extension.stopAllVms"
@@ -29,6 +30,12 @@
         "category": "Virtual Box",
         "title": "Run Virtual Machine",
         "icon": "$(run)"
+      },
+      {
+        "command": "virtualbox-extension.runHeadlessVM",
+        "category": "Virtual Box",
+        "title": "Run Virtual Machine (Headless)",
+        "icon": "$(terminal)"
       },
       {
         "command": "virtualbox-extension.saveStateVM",
@@ -90,6 +97,11 @@
           "when": "viewItem == vmStopped && view == vb-machines"
         },
         {
+          "command": "virtualbox-extension.runHeadlessVM",
+          "group": "inline",
+          "when": "viewItem == vmStopped && view == vb-machines"
+        },
+        {
           "command": "virtualbox-extension.saveStateVM",
           "group": "inline",
           "when": "viewItem == vmRunning && view == vb-machines"
@@ -102,6 +114,10 @@
       "commandPalette": [
         {
           "command": "virtualbox-extension.runVM",
+          "when": "false"
+        },
+        {
+          "command": "virtualbox-extension.runHeadlessVM",
           "when": "false"
         },
         {
@@ -140,6 +156,7 @@
     "vscode-test": "^1.3.0"
   },
   "dependencies": {
-    "virtualbox": "^1.0.0"
+    "virtualbox": "^1.0.0",
+    "vscode": "^1.1.37"
   }
 }
