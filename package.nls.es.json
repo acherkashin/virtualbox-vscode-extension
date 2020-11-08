@@ -1,0 +1,12 @@
+{
+    "vb-machines": "Máquinas Virtuales",
+    "virtual-box-explorer": "Máquinas Virtuales",
+    "extension.description": "La extensión permite administrar sus Máquinas Virtuales directamente desde Visual Studio Code",
+    "virtualbox-extension.runVM": "Iniciar Máquinas Virtual",
+    "virtualbox-extension.runHeadlessVM": "Iniciar Máquinas Virtual (Sin pantalla)",
+    "virtualbox-extension.saveStateVM": "Detener Máquinas Virtual (El estado se guardará)",
+    "virtualbox-extension.stopAllVms": "Detener todas las Máquinas Virtuales (El estado se guardará)",
+    "virtualbox-extension.refreshVMs": "Actualizar explorador de Máquinas Virtuales",
+    "virtualbox-extension.poweOffAllVms": "Apaguar todas las Máquinas Virtuales (El estado se perderá)",
+    "virtualbox-extension.poweroffVm": "Apaguar la Máquina Virtual (El estado se perderá)"
+}
