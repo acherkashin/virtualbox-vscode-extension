@@ -1,14 +1,17 @@
 import * as vscode from 'vscode';
+import * as nls from 'vscode-nls';
+import { isRunning, poweOffAllVms, powerOff, saveState, startWithGui, startWithoutGui, stopAllVms } from './utils';
 import { VirtualMachinesProvider } from './vmsProvider';
 import { VirtualMachineTreeItem } from './vmTreeitem';
-import { isRunning, startWithGui, startWithoutGui, saveState, powerOff, stopAllVms, poweOffAllVms } from './utils';
 
-export function activate(context: vscode.ExtensionContext) {
+const localize = nls.loadMessageBundle();
+
+export function activate(context: vscode.ExtensionContext): void {
 	const vmProvider = new VirtualMachinesProvider();
 	vscode.window.registerTreeDataProvider("vb-machines", vmProvider);
 
 	context.subscriptions.push(
-		vscode.commands.registerCommand('virtualbox-extension.runVM', async (vmTreeItem?: VirtualMachineTreeItem) => {
+		vscode.commands.registerCommand('virtualbox-extension.runVM', async (vmTreeItem?: VirtualMachineTreeItem): Promise<void> => {
 			if (vmTreeItem) {
 				const { vm } = vmTreeItem;
 				const running = await isRunning(vm.id);
@@ -25,7 +28,7 @@ export function activate(context: vscode.ExtensionContext) {
 				vmProvider.refresh();
 			}
 		}),
-		vscode.commands.registerCommand('virtualbox-extension.runHeadlessVM', async (vmTreeItem?: VirtualMachineTreeItem) => {
+		vscode.commands.registerCommand('virtualbox-extension.runHeadlessVM', async (vmTreeItem?: VirtualMachineTreeItem): Promise<void> => {
 			if (vmTreeItem) {
 				const { vm } = vmTreeItem;
 				const running = await isRunning(vm.id);
@@ -42,7 +45,7 @@ export function activate(context: vscode.ExtensionContext) {
 				vmProvider.refresh();
 			}
 		}),
-		vscode.commands.registerCommand("virtualbox-extension.saveStateVM", async (vmTreeItem: VirtualMachineTreeItem) => {
+		vscode.commands.registerCommand("virtualbox-extension.saveStateVM", async (vmTreeItem: VirtualMachineTreeItem): Promise<void> => {
 			if (vmTreeItem) {
 				const { vm } = vmTreeItem;
 
@@ -58,7 +61,7 @@ export function activate(context: vscode.ExtensionContext) {
 				vmProvider.refresh();
 			}
 		}),
-		vscode.commands.registerCommand("virtualbox-extension.poweroffVm", async (vmTreeItem: VirtualMachineTreeItem) => {
+		vscode.commands.registerCommand("virtualbox-extension.poweroffVm", async (vmTreeItem: VirtualMachineTreeItem): Promise<void> => {
 			if (vmTreeItem) {
 				const { vm } = vmTreeItem;
 
@@ -74,16 +77,16 @@ export function activate(context: vscode.ExtensionContext) {
 				vmProvider.refresh();
 			}
 		}),
-		vscode.commands.registerCommand('virtualbox-extension.refreshVMs', () => {
+		vscode.commands.registerCommand('virtualbox-extension.refreshVMs', (): void => {
 			vmProvider.refresh();
 		}),
-		vscode.commands.registerCommand('virtualbox-extension.stopAllVms', () => {
-			stopAllVms().then(() => {
+		vscode.commands.registerCommand('virtualbox-extension.stopAllVms', (): void => {
+			stopAllVms().then((): void => {
 				vmProvider.refresh();
 			});
 		}),
-		vscode.commands.registerCommand('virtualbox-extension.poweOffAllVms', () => {
-			poweOffAllVms().then(() => {
+		vscode.commands.registerCommand('virtualbox-extension.poweOffAllVms', (): void => {
+			poweOffAllVms().then((): void => {
 				vmProvider.refresh();
 			});
 		}),

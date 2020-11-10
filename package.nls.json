@@ -1,0 +1,12 @@
+{
+  "vb-machines": "Virtual Machines",
+  "virtual-box-explorer": "Virtual Machines",
+  "extension.description": "Extension allows to manage your Virtual Machines right from Visual Studio Code",
+  "virtualbox-extension.runVM": "Start the Virtual Machine",
+  "virtualbox-extension.runHeadlessVM": "Start the Virtual Machine (Headless)",
+  "virtualbox-extension.saveStateVM": "Stop the Virtual Machine (State will be saved)",
+  "virtualbox-extension.stopAllVms": "Stop all Virtual Machines (State will be saved)",
+  "virtualbox-extension.refreshVMs": "Refresh Virtual Machines Explorer",
+  "virtualbox-extension.poweOffAllVms": "Power off all Virtual Machines (State will be lost)",
+  "virtualbox-extension.poweroffVm": "Power off the Virtual Machine (State will be lost)"
+}
