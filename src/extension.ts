@@ -1,10 +1,10 @@
 import * as vscode from 'vscode';
-import * as nls from 'vscode-nls';
+// import { loadMessageBundle } from 'vscode-nls/node';
 import { isRunning, poweOffAllVms, powerOff, saveState, startWithGui, startWithoutGui, stopAllVms } from './utils';
 import { VirtualMachinesProvider } from './vmsProvider';
 import { VirtualMachineTreeItem } from './vmTreeitem';
 
-const localize = nls.loadMessageBundle();
+// loadMessageBundle();
 
 export function activate(context: vscode.ExtensionContext): void {
 	const vmProvider = new VirtualMachinesProvider();
