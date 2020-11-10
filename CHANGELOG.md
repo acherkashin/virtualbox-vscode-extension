@@ -25,7 +25,7 @@ Check [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) for recommendatio
 
 ## [0.0.4] - 2020-04-11
 ### Added
-- Fix ling to running vm git
+- Fix link to running vm git
 
 ## [0.0.3] - 2020-04-11
 ### Added
