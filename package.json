@@ -193,6 +193,6 @@
   },
   "dependencies": {
     "virtualbox": "^1.0.0",
-    "vscode-nls": "^4.1.0"
+    "vscode-nls": "^5.0.0"
   }
 }
