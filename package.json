@@ -2,7 +2,7 @@
   "name": "virtualbox-extension",
   "displayName": "VirtualBox",
   "description": "%extension.description%",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "publisher": "acherkashin",
   "icon": "images/virtualbox-extension-icon.png",
   "engines": {
