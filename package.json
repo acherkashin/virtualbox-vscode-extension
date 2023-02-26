@@ -6,7 +6,7 @@
   "publisher": "acherkashin",
   "icon": "images/virtualbox-extension-icon.png",
   "engines": {
-    "vscode": "^1.44.0"
+    "vscode": "^1.75.0"
   },
   "repository": {
     "type": "git",
@@ -179,20 +179,18 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/glob": "^7.1.1",
-    "@types/mocha": "^7.0.2",
-    "@types/node": "^13.11.0",
-    "@types/vscode": "^1.44.0",
-    "@typescript-eslint/eslint-plugin": "^2.26.0",
-    "@typescript-eslint/parser": "^2.26.0",
-    "eslint": "^6.8.0",
-    "glob": "^7.1.6",
-    "mocha": "^7.1.1",
-    "typescript": "^3.8.3",
-    "vscode-test": "^1.3.0"
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/vscode": "^1.75.0",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "@vscode/test-electron": "^2.2.3",
+    "eslint": "^8.34.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^4.9.5"
   },
   "dependencies": {
-    "virtualbox": "^1.0.0",
-    "vscode-nls": "^5.0.0"
+    "virtualbox": "^1.0.0"
   }
 }

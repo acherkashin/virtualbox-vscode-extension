@@ -1,10 +1,7 @@
 import * as vscode from 'vscode';
-// import { loadMessageBundle } from 'vscode-nls/node';
 import { isRunning, poweOffAllVms, powerOff, saveState, startWithGui, startWithoutGui, stopAllVms } from './utils';
 import { VirtualMachinesProvider } from './vmsProvider';
 import { VirtualMachineTreeItem } from './vmTreeitem';
-
-// loadMessageBundle();
 
 export function activate(context: vscode.ExtensionContext): void {
 	const vmProvider = new VirtualMachinesProvider();
@@ -20,7 +17,8 @@ export function activate(context: vscode.ExtensionContext): void {
 					try {
 						await startWithGui(vm.id);
 						vscode.window.showInformationMessage(`Virtual machine "${vm.name}" has been run successfully`);
-					} catch (ex) {
+					} catch (_ex) {
+						const ex = _ex as any;
 						vscode.window.showErrorMessage(`Cannot run virtual machine "${vm.name}": ${ex?.message ?? "Unknown error"}`);
 					}
 				}
@@ -37,8 +35,9 @@ export function activate(context: vscode.ExtensionContext): void {
 					try {
 						await startWithoutGui(vm.id);
 						vscode.window.showInformationMessage(`Virtual machine "${vm.name}" (Headless) has been run successfully`);
-					} catch (ex) {
-						vscode.window.showErrorMessage(`Cannot run virtual machine "${vm.name}" (Headless): ${ex?.message ?? "Unknown error"}`);
+					} catch (_ex) {
+						const ex = _ex as any;
+						vscode.window.showErrorMessage(`Cannot run virtual machine "${vm.name}" (Headless): ${ex!.message ?? "Unknown error"}`);
 					}
 				}
 
@@ -54,7 +53,8 @@ export function activate(context: vscode.ExtensionContext): void {
 					try {
 						await saveState(vm.id);
 						vscode.window.showInformationMessage(`Virtual machine "${vm.name}" has been stopped successfully`);
-					} catch (ex) {
+					} catch (_ex) {
+						const ex = _ex as any;
 						vscode.window.showErrorMessage(`Cannot stop virtual machine "${vm.name}": ${ex?.message ?? "Unknown error"}`);
 					}
 				}
@@ -70,7 +70,8 @@ export function activate(context: vscode.ExtensionContext): void {
 					try {
 						await powerOff(vm.id);
 						vscode.window.showInformationMessage(`Virtual machine "${vm.name}" has been stopped successfully`);
-					} catch (ex) {
+					} catch (_ex) {
+						const ex = _ex as any;
 						vscode.window.showErrorMessage(`Cannot stop virtual machine "${vm.name}": ${ex?.message ?? "Unknown error"}`);
 					}
 				}
